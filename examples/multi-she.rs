@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 use rust_multi_she::*;
+=======
+use rust_she::*;
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
 use time::Instant;
 
 fn main() {
@@ -14,13 +18,21 @@ fn main() {
     // 生成 DSHE 参数
     
     for i in 0..1 {
+<<<<<<< HEAD
         let (param1, param2) = Multi_SHE::key_gen_param_with_chosen_user_ab(k0, k1, k2); 
+=======
+        let (param1, param2) = SHE::key_gen_param_with_chosen_user_ab(k0, k1, k2); 
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
         let (pk1, pp1) = param1.key_generation();
         let (pk2, pp2) = param2.key_generation();
     }
     let key_gen_time = key_gen_time.elapsed();
 
+<<<<<<< HEAD
     let (param1, param2) = Multi_SHE::key_gen_param_with_chosen_user_ab(k0, k1, k2);
+=======
+    let (param1, param2) = SHE::key_gen_param_with_chosen_user_ab(k0, k1, k2);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
     
     let (pk1, pp1) = param1.key_generation();
     let (pk2, pp2) = param2.key_generation();
@@ -30,19 +42,32 @@ fn main() {
     let mut vv:Vec<BigInt> = vec![];
     let enc_time = Instant::now();
     for i in 0..n {
+<<<<<<< HEAD
         let e01 = Multi_SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, i as u128);
+=======
+        let e01 = SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, i as u128);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
         //let e02 = SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, i as u128);
         vv.push(e01);
     }
     let enc_time = enc_time.elapsed();
 
+<<<<<<< HEAD
     let e01 = Multi_SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, 10000);
     let e02 = Multi_SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, 10000);
+=======
+    let e01 = SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, 10000);
+    let e02 = SHE::encrypt_with_chosen_user_ab(&pk1, &pk2, &pp1, 10000);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
 
     // 测量解密时间
     let dec_time = Instant::now();
     for i in 0..n {
+<<<<<<< HEAD
         let m1 = Multi_SHE::decrypt_with_chosen_user_ab(&pk1, &pk2, &vv[i]);
+=======
+        let m1 = SHE::decrypt_with_chosen_user_ab(&pk1, &pk2, &vv[i]);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
         //let m2 = SHE::decrypt_with_chosen_user_ab(&pk1, &pk2, &e02);
     }
     let dec_time = dec_time.elapsed();
@@ -51,7 +76,11 @@ fn main() {
     let mult_time = Instant::now();
     for i in 0..n {
         //let product = &e01 * &e02;
+<<<<<<< HEAD
         let product = Multi_SHE::Multi_cMul(&pk2, &pp2, &e01, &e02);
+=======
+        let product = SHE::Multi_cMul(&pk2, &pp2, &e01, &e02);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
     }
     let mult_time = mult_time.elapsed();
 
@@ -59,7 +88,11 @@ fn main() {
     let scalar_mult_time = Instant::now();
     for i in 0..n {
         //let product_scalar = &e01 * BigInt::from(10000);
+<<<<<<< HEAD
         let product = Multi_SHE::Multi_sMul(&pk2, &pp2, &e01, 10000);
+=======
+        let product = SHE::Multi_sMul(&pk2, &pp2, &e01, 10000);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
     }
     let scalar_mult_time = scalar_mult_time.elapsed();
 
@@ -67,7 +100,11 @@ fn main() {
     let sum_time = Instant::now();
     for i in 0..n {
         //let sum = &e01 + &e02;
+<<<<<<< HEAD
         let product = Multi_SHE::Multi_cAdd(&pk2, &pp2, &e01, &e02);
+=======
+        let product = SHE::Multi_cAdd(&pk2, &pp2, &e01, &e02);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
     }
     let sum_time = sum_time.elapsed();
 
@@ -75,7 +112,11 @@ fn main() {
     let scalar_sum_time = Instant::now();
     for i in 0..n {
         //let sum_scalar = &e01 + BigInt::from(1000000);
+<<<<<<< HEAD
         let product = Multi_SHE::Multi_sAdd(&pk2, &pp2, &e01,10000);
+=======
+        let product = SHE::Multi_sAdd(&pk2, &pp2, &e01,10000);
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
     }
     let scalar_sum_time = scalar_sum_time.elapsed();
 

@@ -8,9 +8,11 @@ pub trait KeyParamGeneration<KGP> {
     }
 
     // DSHE for 2-party
+
     // fn key_gen_param_with_chosen_user_aba(k_0: usize, k_1: usize, k_2: usize) -> (KGP, KGP) {
     //     Self::KeyGenParamABA(k_0, k_1, k_2)
     // }
+
 
     fn key_gen_param_with_chosen_user_ab(k_0: usize, k_1: usize, k_2: usize) -> (KGP, KGP) {
         Self::KeyGenParamAB(k_0, k_1, k_2)
@@ -19,6 +21,7 @@ pub trait KeyParamGeneration<KGP> {
     fn KeyGenParam_with_length(k_0: usize, k_1: usize, k_2: usize) -> KGP;
 
     fn KeyGenParam_safe_primes_with_length(k_0: usize, k_1: usize, k_2: usize) -> KGP;
+
 
     //fn KeyGenParamABA(k_0: usize, k_1: usize, k_2: usize) -> (KGP, KGP);
 
@@ -53,7 +56,9 @@ pub trait Encryption<PK, PP, PT, CT> {
 
     fn encrypt_in_public_key_setting(PP: &PP, ct1: &CT, ct2: &CT, pt: PT) -> CT;
 
+
     fn encrypt_in_public_key_setting_with_prerandom(PP: &PP, ct1: &CT, ct2: &CT, pt: &CT, r1: &CT, r2: &CT) -> CT;
+
 }
 
 pub trait Decryption<PK, CT, PT> {
@@ -64,6 +69,7 @@ pub trait Decryption<PK, CT, PT> {
     // fn decrypt_with_chosen_user_aba_I(pk1: &PK, pk2: &PK, ct: &CT) -> PT;
 
     // fn decrypt_with_chosen_user_aba_II(pk1: &PK, pk2: &PK, ct: &CT) -> PT;
+
 
     fn decrypt_with_chosen_user_ab(pk1: &PK, pk2: &PK, ct: &CT) -> PT;
 

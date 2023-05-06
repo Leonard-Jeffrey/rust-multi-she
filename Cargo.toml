@@ -7,6 +7,7 @@ description = "the pure rust implemention library for Multi-SHE"
 categories = ["Cryptography", "Algorithms"]
 keywords = ["Symmetric homomorphic encryption (SHE)", "Cryptography"]
 repository = "https://github.com/Leonard-Jeffrey/rust-multi-she.git"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]

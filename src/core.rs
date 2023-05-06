@@ -8,7 +8,9 @@ use curv::arithmetic::traits::*;
 
 use crate::keygen::*;
 
+
 use crate::{Multi_SHE, KeyGenParam, PriKey, PubParam, BigInt}; 
+
 
 impl KeyGenParam {
     pub fn key_generation(&self) -> (PriKey, PubParam) {
@@ -36,6 +38,7 @@ impl<'KGP> From<&'KGP KeyGenParam> for PubParam {
         }
     }
 }
+
 
 impl Encryption<PriKey, PubParam, u128, BigInt> for Multi_SHE {
     fn encrypt(pk: &PriKey, pp: &PubParam, pt: u128) -> BigInt {
@@ -71,6 +74,8 @@ impl Encryption<PriKey, PubParam, u128, BigInt> for Multi_SHE {
     //     // (1 + r2 * L2)(r1 * L1 + m)(1 + rr1 * p)
     // }
 
+
+
      // The entire AB type encryption
     fn encrypt_with_chosen_user_ab(pk1: &PriKey, pk2: &PriKey, pp: &PubParam, pt: u128) -> BigInt {
         let pt = BigInt::from(pt as u64);
@@ -92,6 +97,7 @@ impl Encryption<PriKey, PubParam, u128, BigInt> for Multi_SHE {
             &(pp.N.clone()*pk2.L.clone()))
         // (1 + r2 * L2)(r1 * L1 + m)(1 + rr1 * p) % N*L2
     }
+
 
     fn encrypt_with_chosen_user_ab_prerandom(pk1: &PriKey, pk2: &PriKey, pp: &PubParam, pt: &BigInt, r_1: &BigInt, rr_1: &BigInt, r_2: &BigInt) -> BigInt{
         let first_c = (r_1 * pk1.L.clone() + pt) * (BigInt::from(1) + rr_1 * pk1.p.clone());
@@ -134,6 +140,7 @@ impl Encryption<PriKey, PubParam, u128, BigInt> for Multi_SHE {
     //     // )
     //     (BigInt::from(1) + r_2 * pk2.L.clone()) * (r_1 * pk1.L.clone() + pt) * (BigInt::from(1) + rr_1 * pk1.p.clone())
     // }
+
 
     // The first part of AB encryption
     fn encrypt_with_chosen_user_ab_I(pk1: &PriKey, pk2: &PriKey, pp: &PubParam, pt: u128) -> BigInt {
@@ -199,11 +206,8 @@ impl Encryption<PriKey, PubParam, u128, BigInt> for Multi_SHE {
 }
 
 impl Decryption<PriKey, BigInt, BigInt> for Multi_SHE {
-    fn decrypt(pk: &PriKey, ct: BigInt) -> BigInt {
-        (ct % pk.p.clone()) % pk.L.clone()
-    }
-
     // A-B-A
+
     // fn decrypt_with_chosen_user_aba(pk1: &PriKey, pk2: &PriKey, ct: &BigInt) -> BigInt {
     //     ((ct % pk1.p.clone()) % pk2.L.clone()) % pk1.L.clone()
     // }
@@ -217,6 +221,7 @@ impl Decryption<PriKey, BigInt, BigInt> for Multi_SHE {
     // fn decrypt_with_chosen_user_aba_II(pk1: &PriKey, pk2: &PriKey, ct: &BigInt) -> BigInt {
     //     ((ct % pk1.p.clone()) % pk2.L.clone()) % pk1.L.clone()
     // }
+
 
     // A-B
     fn decrypt_with_chosen_user_ab(pk1: &PriKey, pk2: &PriKey, ct: &BigInt) -> BigInt {
@@ -233,6 +238,7 @@ impl Decryption<PriKey, BigInt, BigInt> for Multi_SHE {
         (ct % pk1.p.clone()) % pk1.L.clone()
     }
 }
+
 
 impl Homomorphism<PriKey, PubParam, BigInt, usize> for Multi_SHE {
     fn s_Add(pp: &PubParam, ct: &BigInt, scalar: usize) -> BigInt {

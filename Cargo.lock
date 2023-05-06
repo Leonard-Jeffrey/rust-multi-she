@@ -698,7 +698,11 @@ dependencies = [
 ]
 
 [[package]]
+<<<<<<< HEAD
 name = "rust-multi-she"
+=======
+name = "rust-she"
+>>>>>>> 69757af4c2ede6a20930e0858307ee7808fde90f
 version = "0.1.0"
 dependencies = [
  "curv-kzen",
