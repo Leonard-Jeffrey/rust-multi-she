@@ -1,0 +1,28 @@
+[package]
+name = "rust-multi-she"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jeffrey Shang"]
+description = "the pure rust implemention library for Multi-SHE"
+categories = ["Cryptography", "Algorithms"]
+keywords = ["Symmetric homomorphic encryption (SHE)", "Cryptography"]
+repository = "https://github.com/Leonard-Jeffrey/rust-multi-she.git"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+curv-kzen = {version = "0.9", default-features = false}
+serde = {version = "1.0", features = ["derive"]}
+time = {version = "0.3"}
+rand = {version = "0.3.17"}
+
+[features]
+default = ["curv-kzen/rust-gmp-kzen"]
+
+[[examples]]
+name = "function"
+
+[[examples]]
+name = "peformance"
+
+[[examples]]
+name = "2p-function"
